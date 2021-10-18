@@ -32,8 +32,12 @@ const main = async () => {
 
 app.use(cors());
 
+app.use(Express.static("public"));
+
 main();
 
-app.listen(4000, () => console.log(`GraphQL Server running`));
+app.listen({ port: process.env.PORT || 4000 }, () =>
+  console.log(`GraphQL Server running`)
+);
 
 export default app;
