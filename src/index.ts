@@ -5,7 +5,6 @@ import { ApolloServer } from "apollo-server-express";
 import schemas from "./graphql/schemas";
 import { createConnection } from "typeorm";
 import router from "./storage/rotas";
-import cors from "cors";
 
 const app = Express();
 
@@ -29,10 +28,6 @@ const main = async () => {
 
   apolloServer.applyMiddleware({ app });
 };
-
-app.use(cors());
-
-app.use(Express.static("public"));
 
 main();
 
