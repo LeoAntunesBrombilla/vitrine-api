@@ -1,0 +1,115 @@
+Adição de Usuário ---------------------------
+
+mutation($addUsuarioIsAdmin: Boolean!, $addUsuarioSenha: String!, $addUsuarioLogin: String!){
+  addUsuario(isAdmin: $addUsuarioIsAdmin, senha: $addUsuarioSenha, login: $addUsuarioLogin) {
+    login
+    senha
+    isAdmin
+  }
+}
+
+{
+  "addUsuarioIsAdmin": true,
+  "addUsuarioSenha": "123456",
+  "addUsuarioLogin": "Leon"
+}
+
+
+Busca de usuário por ID ---------------------
+
+query($buscaUsuarioPorId: String!){
+  buscaUsuarioPorId(usuarioId: $buscaUsuarioPorId) {
+    login
+  }
+}
+
+{
+  "buscaUsuarioPorId": "6140fff5ec51290475b5d451"
+}
+
+Busca por todos os usuários -----------------
+
+query {
+  buscaUsuarios {
+    login
+    senha
+    isAdmin
+  }
+}
+
+
+----------------------------------------------
+
+Campanha -
+
+ADICIONAR CAMPANHA
+
+mutation($data: AdicionarCampanhaInput!) {
+  adicionarCampanha(data: $data) {
+    categoria
+    createdAt
+    dataFim
+    dataInicio
+    descricao
+    id
+    imagem
+    nome
+    updatedAt
+  }
+}
+
+{
+  "data": {
+    "categoria": "assinatura de tv",
+    "createdAt": "2016-07-20T17:30:15+05:30",
+    "updatedAt": "2017-07-20T17:30:15+05:30",
+    "dataFim": "2018-07-20T17:30:15+05:30",
+    "dataInicio": "2017-08-20T17:30:15+05:30",
+    "descricao": "campanha netflix",
+    "imagem": "https://miro.medium.com/max/1400/1*tHy8v5LnTwqLcvLglyIErw.png",
+    "nome": "campanha netflix"
+  }
+}
+
+
+BUSCAR CAMPANHA POR ID
+
+query($data: String!){
+  buscaCampanhaPorId(campanhaId: $data) {
+    nome
+  }
+}
+
+{
+ "data": "6147929296d92e017973537a"
+}
+
+Atualizar Campanha por id
+
+mutation($data: AdicionarCampanhaInput!, $id: String!){
+  atualizarCampanha(data: $data, id: $id) {
+    id
+    nome
+    categoria
+    createdAt
+    dataFim
+    dataInicio
+    descricao
+    imagem
+  }
+}
+
+{
+  "id": "6147929296d92e017973537a",
+  "data": {
+     "categoria": "assinatura de tv",
+    "createdAt": "2016-07-20T17:30:15+05:30",
+    "updatedAt": "2017-07-20T17:30:15+05:30",
+    "dataFim": "2018-07-20T17:30:15+05:30",
+    "dataInicio": "2017-08-20T17:30:15+05:30",
+    "descricao": "campanha hbo",
+    "imagem": "https://miro.medium.com/max/1400/1*tHy8v5LnTwqLcvLglyIErw.png",
+    "nome": "campanha hbo"
+  }
+}
+
