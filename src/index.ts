@@ -31,6 +31,10 @@ const main = async () => {
 
 main();
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+});
+
 app.listen({ port: process.env.PORT || 4000 }, () =>
   console.log(`GraphQL Server running`)
 );
