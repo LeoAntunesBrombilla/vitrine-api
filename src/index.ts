@@ -1,14 +1,15 @@
-import 'reflect-metadata';
-import Express from 'express';
-import { ApolloServer } from 'apollo-server-express';
+import "reflect-metadata";
+import Express from "express";
+import { ApolloServer } from "apollo-server-express";
 
-import schemas from './graphql/schemas';
-import { createConnection } from 'typeorm';
-import router from './storage/rotas';
+import schemas from "./graphql/schemas";
+import { createConnection } from "typeorm";
+import router from "./storage/rotas";
+import cors from "cors";
 
 const app = Express();
 
-app.use('/', router);
+app.use("/", router);
 
 const main = async () => {
   try {
@@ -28,6 +29,8 @@ const main = async () => {
 
   apolloServer.applyMiddleware({ app });
 };
+
+app.use(cors());
 
 main();
 
