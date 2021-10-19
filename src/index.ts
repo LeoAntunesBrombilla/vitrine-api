@@ -10,7 +10,6 @@ const app = Express();
 
 const corsOptions = {
   origin: "http://localhost:3000",
-  credentials: true,
 };
 
 app.use("/", router);
