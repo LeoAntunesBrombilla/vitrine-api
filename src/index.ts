@@ -6,10 +6,13 @@ import schemas from "./graphql/schemas";
 import { createConnection } from "typeorm";
 import router from "./storage/rotas";
 
+import cors from "cors";
+
 const app = Express();
 
 const corsOptions = {
   origin: "http://localhost:3000",
+  credentials: true,
 };
 
 app.use("/", router);
@@ -34,6 +37,8 @@ const main = async () => {
 };
 
 main();
+
+app.use(cors());
 
 app.use((_, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
