@@ -8,6 +8,11 @@ import router from "./storage/rotas";
 
 const app = Express();
 
+const corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true,
+};
+
 app.use("/", router);
 
 const main = async () => {
@@ -26,7 +31,7 @@ const main = async () => {
 
   await apolloServer.start();
 
-  apolloServer.applyMiddleware({ app });
+  apolloServer.applyMiddleware({ app, cors: corsOptions });
 };
 
 main();
