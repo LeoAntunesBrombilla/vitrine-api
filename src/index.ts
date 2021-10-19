@@ -17,6 +17,13 @@ const corsOptions = {
 
 app.use("/", router);
 
+app.use(
+  cors({
+    optionsSuccessStatus: 200, //option sucess status
+    origin: "http://localhost:3000", //origin allowed to access the server
+  })
+);
+
 const main = async () => {
   try {
     await createConnection();
@@ -37,8 +44,6 @@ const main = async () => {
 };
 
 main();
-
-app.use(cors());
 
 app.use((_, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
