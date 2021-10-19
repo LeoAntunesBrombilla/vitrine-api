@@ -31,8 +31,9 @@ const main = async () => {
 
 main();
 
-app.use((req, res, next) => {
+app.use((_, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
+  next();
 });
 
 app.listen({ port: process.env.PORT || 4000 }, () =>
